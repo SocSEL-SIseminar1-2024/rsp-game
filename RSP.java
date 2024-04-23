@@ -18,57 +18,14 @@ public class RSP {
 		System.out.println(" Enemy hand is: " + enemy_hand);
 
 		System.out.print("Result: ");
-		// 勝敗判定
-		switch (player_hand) {
-			case 0:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 1:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 2:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 1:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					case 2:
-						System.out.println(GREEN + "Draw!");
-						break;
-					default:
-						break;
-				}
-				break;
-			default:
-				break;
+
+		int prepare = (player_hand - enemy_hand) % 3;
+
+		switch(prepare){
+			case 0: System.out.println(GREEN + "Draw!"); break;
+			case 1: System.out.println(PURPLE + "Enemy win!"); break;
+			case 2: System.out.println(YELLOW + "You win!"); break;
 		}
-	}
 
 	// 受け取った範囲でランダムな数値を生成
 	private static int getRandomInt(int range) {
