@@ -19,58 +19,16 @@ public class RSP {
 
 		System.out.print("Result: ");
 		// 勝敗判定
-		switch (player_hand) {
-			case 0:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 1:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 2:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 1:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					case 2:
-						System.out.println(GREEN + "Draw!");
-						break;
-					default:
-						break;
-				}
-				break;
-			default:
-				break;
-		}
-	}
+        if (player_hand == enemy_hand) {
+            System.out.println(YELLOW + "Draw");
+        } else if ((player_hand == 0 && enemy_hand == 1) || (player_hand == 1 && enemy_hand == 2)
+                || (player_hand == 2 && enemy_hand == 0)) {
+            System.out.println(GREEN + "You Win!");
+        } else {
+            System.out.println(PURPLE + "You Lose!");
+        }
 
-	// 受け取った範囲でランダムな数値を生成
+        // 受け取った範囲でランダムな数値を生成
 	private static int getRandomInt(int range) {
 		Random random = new Random();
 		int random_num = random.nextInt(range);
