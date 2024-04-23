@@ -4,9 +4,9 @@ import java.util.Scanner;
 public class RSP {
 	public static void main(String[] args) {
 		// テキストに使う色の宣言
-		final String GREEN = "\u001b[00;31m";
+		final String GREEN = "\u001b[00;32m";
 		final String YELLOW = "\u001b[00;33m";
-		final String PURPLE = "\u001b[00;34m";
+		final String PURPLE = "\u001b[00;35m";
 		// プレイヤーの手を入力
 		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
 		Scanner scan = new Scanner(System.in);
