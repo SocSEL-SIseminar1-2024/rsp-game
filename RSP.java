@@ -1,16 +1,32 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.io.*;
 
 public class RSP {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// テキストに使う色の宣言
 		final String GREEN = "\u001b[00;31m";
 		final String YELLOW = "\u001b[00;33m";
 		final String PURPLE = "\u001b[00;34m";
-		// プレイヤーの手を入力
-		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
 		Scanner scan = new Scanner(System.in);
-		int player_hand = Integer.parseInt(scan.nextLine());
+		int player_hand = 0;
+		// 0, 1, 2が入力されるまで繰り返す
+		while(true) {
+			// プレイヤーの手を入力
+			System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
+			try {
+				player_hand = Integer.parseInt(scan.nextLine());
+			} catch (NumberFormatException e) { //文字列が入力されたときの例外処理
+				System.out.println("Please input number.");
+				continue;
+			}
+			// 0, 1, 2が入力された場合
+			if ((player_hand >= 0) && (player_hand <= 2)) {
+				break;
+			} else { // 0, 1, 2が入力されなかった場合
+				System.out.println("Please enter form '0' to '2'.");
+			}
+		}
 		scan.close();
 
 		// 相手の手を決定
