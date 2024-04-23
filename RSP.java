@@ -4,9 +4,10 @@ import java.util.Scanner;
 public class RSP {
 	public static void main(String[] args) {
 		// テキストに使う色の宣言
-		final String GREEN = "\u001b[00;31m";
+		final String GREEN = "\u001b[00;32m";
 		final String YELLOW = "\u001b[00;33m";
 		final String PURPLE = "\u001b[00;34m";
+		final String RED = "\u001b[00;31m";
 		// プレイヤーの手を入力
 		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
 		Scanner scan = new Scanner(System.in);
@@ -14,53 +15,164 @@ public class RSP {
 		scan.close();
 
 		// 相手の手を決定
-		int enemy_hand = getRandomInt(2);
-		System.out.println(" Enemy hand is: " + enemy_hand);
+		int enemy_hand_1 = getRandomInt(2);
+		System.out.println(" Enemy 1 hand is: " + enemy_hand_1);
+
+		int enemy_hand_2 = getRandomInt(2);
+		System.out.println(" Enemy 2 hand is: " + enemy_hand_2);
 
 		System.out.print("Result: ");
 		// 勝敗判定
 		switch (player_hand) {
 			case 0:
-				switch (enemy_hand) {
+				switch (enemy_hand_1) {
 					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(GREEN + "Draw!");
+								break;
+							case 1:
+								System.out.println(YELLOW + "You and Enemy 1 win!");
+								break;
+							case 2:
+								System.out.println(PURPLE + "Enemy 2 win!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(YELLOW + "You and Enemy 2 win!");
+								break;
+							case 1:
+								System.out.println(YELLOW + "You win!");
+								break;
+							case 2:
+								System.out.println(GREEN + "Draw!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(PURPLE + "Enemy 1 win!");
+								break;
+							case 1:
+								System.out.println(GREEN + "Draw!");
+								break;
+							case 2:
+								System.out.println(PURPLE + "Enemy 1 and Enemy 2 win!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					default:
 						break;
 				}
 				break;
 			case 1:
-				switch (enemy_hand) {
+				switch (enemy_hand_1) {
 					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(PURPLE + "Enemy 1 and Enemy 2 win!");
+								break;
+							case 1:
+								System.out.println(PURPLE + "Enemy 1 win!");
+								break;
+							case 2:
+								System.out.println(GREEN + "Draw!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(PURPLE + "Enemy 2 win!");
+								break;
+							case 1:
+								System.out.println(GREEN + "GREEN!");
+								break;
+							case 2:
+								System.out.println(YELLOW + "You and Enemy 1 win!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(GREEN + "Draw!");
+								break;
+							case 1:
+								System.out.println(YELLOW + "You and Enemy 2 win!");
+								break;
+							case 2:
+								System.out.println(YELLOW + "You win!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					default:
 						break;
 				}
 				break;
 			case 2:
-				switch (enemy_hand) {
+				switch (enemy_hand_1) {
 					case 0:
-						System.out.println(YELLOW + "You win!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(YELLOW + "You win!");
+								break;
+							case 1:
+								System.out.println(GREEN + "Draw!");
+								break;
+							case 2:
+								System.out.println(YELLOW + "You and Enemy 2 win!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					case 1:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(GREEN + "Draw!");
+								break;
+							case 1:
+								System.out.println(PURPLE + "Enemy 1 and Enemy 2 win!");
+								break;
+							case 2:
+								System.out.println(PURPLE + "Enemy 1 win!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					case 2:
-						System.out.println(GREEN + "Draw!");
-						break;
+						switch (enemy_hand_2) {
+							case 0:
+								System.out.println(YELLOW + "You and Enemy 1 win!");
+								break;
+							case 1:
+								System.out.println(PURPLE + "Enemy 2 win!");
+								break;
+							case 2:
+								System.out.println(GREEN + "Draw!");
+								break;
+							default:
+								break;
+						}
+                        			break;
 					default:
 						break;
 				}
