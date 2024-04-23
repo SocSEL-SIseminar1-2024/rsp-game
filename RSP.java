@@ -19,54 +19,15 @@ public class RSP {
 
 		System.out.print("Result: ");
 		// 勝敗判定
-		switch (player_hand) {
+		switch((player_hand - enemy_hand + 3) % 3){
 			case 0:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
+				System.out.println(GREEN + "DRAW!  ONE MORE!!");
 				break;
 			case 1:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
+				System.out.println(PURPLE + "Enemy win!");
 				break;
 			case 2:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 1:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					case 2:
-						System.out.println(GREEN + "Draw!");
-						break;
-					default:
-						break;
-				}
-				break;
-			default:
-				break;
+				System.out.println(YELLOW + "You win!");
 		}
 	}
 
