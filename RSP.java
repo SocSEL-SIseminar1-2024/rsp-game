@@ -9,9 +9,29 @@ public class RSP {
 		final String PURPLE = "\u001b[00;34m";
 		// プレイヤーの手を入力
 		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
-		Scanner scan = new Scanner(System.in);
-		int player_hand = Integer.parseInt(scan.nextLine());
-		scan.close();
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        int player_hand;
+
+        if (input.matches("\\d+")) {
+            player_hand = Integer.parseInt(input);
+        } else {
+            switch (input.toLowerCase()) {
+                case "rock":
+                    player_hand = 0;
+                    break;
+                case "scissors":
+                    player_hand = 1;
+                    break;
+                case "paper":
+                    player_hand = 2;
+                    break;
+                default:
+                    System.out.println("Invalid input. Please input either 0, 1, 2 or Rock, Scissors, Paper.");
+                    return;
+            }
+        }
+        scan.close();
 
 		// 相手の手を決定
 		int enemy_hand = getRandomInt(2);
