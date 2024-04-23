@@ -11,63 +11,35 @@ public class RSP {
 		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
 		Scanner scan = new Scanner(System.in);
 		int player_hand = Integer.parseInt(scan.nextLine());
-		scan.close();
-
+		
 		// 相手の手を決定
 		int enemy_hand = getRandomInt(2);
 		System.out.println(" Enemy hand is: " + enemy_hand);
 
 		System.out.print("Result: ");
 		// 勝敗判定
-		switch (player_hand) {
-			case 0:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 1:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 2:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 1:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					case 2:
-						System.out.println(GREEN + "Draw!");
-						break;
-					default:
-						break;
-				}
-				break;
-			default:
-				break;
+		boolean settelement = false;  //決着がついた場合：true　ついていない場合：false
+		while(!settelement){  //決着がつくまで戦い続ける
+			switch((player_hand - enemy_hand + 3) % 3){  //ここも改善
+				case 0:
+					System.out.println(GREEN + "DRAW!  ONE MORE!!");  //もう一回やろう！
+					
+					System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
+					player_hand = Integer.parseInt(scan.nextLine());
+					enemy_hand = getRandomInt(2);
+					System.out.println(" Enemy hand is: " + enemy_hand);
+					break;
+				case 1:
+					System.out.println(PURPLE + "Enemy win!");
+					settelement = true;  //決着がついたので、trueに
+					break;
+				case 2:
+					System.out.println(YELLOW + "You win!");
+					settelement = true;  //決着がついたので、trueに
+					break;
+			}
 		}
+		scan.close();
 	}
 
 	// 受け取った範囲でランダムな数値を生成
