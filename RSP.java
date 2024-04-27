@@ -7,9 +7,11 @@ public class RSP {
 		final String GREEN = "\u001b[00;31m";
 		final String YELLOW = "\u001b[00;33m";
 		final String PURPLE = "\u001b[00;34m";
-		// プレイヤーの手を入力
-		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
+
 		Scanner scan = new Scanner(System.in);
+		System.out.print("Please select the mode! 0:Normal 1:Reverse\n Your mode is : ");
+		int mode = Integer.parseInt(scan.nextLine());
+		System.out.print("Please input your hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
 		int player_hand = Integer.parseInt(scan.nextLine());
 		scan.close();
 
@@ -19,54 +21,106 @@ public class RSP {
 
 		System.out.print("Result: ");
 		// 勝敗判定
-		switch (player_hand) {
-			case 0:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 1:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(GREEN + "Draw!");
-						break;
-					case 1:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 2:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					default:
-						break;
-				}
-				break;
-			case 2:
-				switch (enemy_hand) {
-					case 0:
-						System.out.println(YELLOW + "You win!");
-						break;
-					case 1:
-						System.out.println(PURPLE + "Enemy win!");
-						break;
-					case 2:
-						System.out.println(GREEN + "Draw!");
-						break;
-					default:
-						break;
-				}
-				break;
-			default:
-				break;
+		if (mode == 0) {
+			switch (player_hand) {
+				case 0:
+					switch (enemy_hand) {
+						case 0:
+							System.out.println(GREEN + "Draw!");
+							break;
+						case 1:
+							System.out.println(YELLOW + "You win!");
+							break;
+						case 2:
+							System.out.println(PURPLE + "Enemy win!");
+							break;
+						default:
+							break;
+					}
+					break;
+				case 1:
+					switch (enemy_hand) {
+						case 0:
+							System.out.println(GREEN + "Enemy win!");
+							break;
+						case 1:
+							System.out.println(YELLOW + "Draw!");
+							break;
+						case 2:
+							System.out.println(PURPLE + "you win!");
+							break;
+						default:
+							break;
+					}
+					break;
+				case 2:
+					switch (enemy_hand) {
+						case 0:
+							System.out.println(YELLOW + "You win!");
+							break;
+						case 1:
+							System.out.println(PURPLE + "Enemy win!");
+							break;
+						case 2:
+							System.out.println(GREEN + "Draw!");
+							break;
+						default:
+							break;
+					}
+					break;
+				default:
+					break;
+			}
+		} else {
+			switch (player_hand) {
+				case 0:
+					switch (enemy_hand) {
+						case 0:
+							System.out.println(GREEN + "Draw!");
+							break;
+						case 1:
+							System.out.println(PURPLE + "Enemy win!");
+							break;
+						case 2:
+							System.out.println(YELLOW + "You win!");
+							break;
+						default:
+							break;
+					}
+					break;
+				case 1:
+					switch (enemy_hand) {
+						case 0:
+							System.out.println(YELLOW + "You win!");
+							break;
+						case 1:
+							System.out.println(GREEN + "Draw!");
+							break;
+						case 2:
+							System.out.println(PURPLE + "Enemy win!");
+							break;
+						default:
+							break;
+					}
+					break;
+				case 2:
+					switch (enemy_hand) {
+						case 0:
+							System.out.println(PURPLE + "Enemy win!");
+							break;
+						case 1:
+							System.out.println(YELLOW + "You win!");
+							break;
+						case 2:
+							System.out.println(GREEN + "Draw!");
+							break;
+						default:
+							break;
+					}
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
