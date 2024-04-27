@@ -11,9 +11,9 @@ public class RSP {
 
 		Scanner scan = new Scanner(System.in);
 		try{
-		System.out.print("Please input your candidate of the hand two! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
+		System.out.print("Please input your candidate of the hand two! 0:Rock 1:Scissors 2:Paper\n First hand is : ");
 		int player_hand_1 = Integer.parseInt(scan.nextLine());
-		System.out.print(" or ");
+        System.out.print("Second hand is :");
 		int player_hand_2 = Integer.parseInt(scan.nextLine());
 
 		// 相手の手の候補決定
@@ -24,13 +24,10 @@ public class RSP {
 		//自分の手の最終決定
 		System.out.print("Please input your final hand! 0:Rock 1:Scissors 2:Paper\n Your hand is : ");
 		int player_hand = Integer.parseInt(scan.nextLine());
-		if ((player_hand==player_hand_1) || (player_hand == player_hand_2)){
-			break;
-		} else {
-			System.out.println("Please inuput" + player_hand_1 +"or"+player_hand_2);
-		}
-		} catch (NumberFormatException e) {
-			System.out.println("Please input number");
+        if ((player_hand != player_hand_1) && (player_hand != player_hand_2)) {
+            System.out.println("Please input " + player_hand_1 + " or " + player_hand_2);
+            return; // プログラムを終了
+        }
 
 		//相手の手を最終決定
 		int random_choice = getRandomInt(1); // 0または1のランダムな値を取得
@@ -40,8 +37,8 @@ public class RSP {
             	} else {
                 	enemy_hand = enemy_hand_2;
             	}
+        System.out.print(" Enemy hand is :" + enemy_hand);
 
-		scan.close();
 
 		System.out.print("Result: ");
 		// 勝敗判定
@@ -51,7 +48,12 @@ public class RSP {
 			System.out.println(YELLOW + "You win!");
 		} else{
 			System.out.println(PURPLE + "Enemy win!");
+            return;
 		}
+        } catch (NumberFormatException e) {
+			System.out.println("Please input number");
+        }
+        scan.close();
 	}
 
 	// 受け取った範囲でランダムな数値を生成
